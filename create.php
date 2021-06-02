@@ -9,12 +9,6 @@ if(array_key_exists('employeeList', $_COOKIE)){
     $employee = unserialize($_COOKIE['employeeList']);
 }
 
-
-
-// print_r($employee);
-// die();
-
-
         if(isset($_POST['submit'])){
 
             if(empty($_POST['name']) || empty($_POST['job']) || empty($_POST['hashKey'])){
@@ -28,7 +22,7 @@ if(array_key_exists('employeeList', $_COOKIE)){
             }
         
 
-            setcookie('employeeList', serialize($employee), time() + 86000);
+            setcookie('employeeList', serialize($employee), time() + 2592000); // emplyee data will be stored for 30 days at cookies
             
 
             $_SESSION['msg'] = "New Employee has been created successfully";

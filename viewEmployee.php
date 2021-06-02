@@ -1,13 +1,13 @@
 <?php
-
 session_start();
 
 $eList = [];
 
-
 if(array_key_exists('employeeList',$_COOKIE)){
     $eList = unserialize($_COOKIE['employeeList']);
 }
+
+unset($eList['datestmp']);
 
 ?>
 
