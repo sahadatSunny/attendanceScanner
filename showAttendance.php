@@ -19,7 +19,7 @@ if(array_key_exists('calendar',$_GET)){
 //extrecting individual data from 'storage.txt' file according to user's selected date & storing it in a variable    
     foreach($datas as $data){
         if(array_key_exists($datestmp,$data)){
-            $individual = ($data[$datestmp]);
+            $individual = ($data[$datestmp]);   //$datestmp is the key of everyday array date will be selected by users
             unset($individual['datestmp']);
         }
     }

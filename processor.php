@@ -18,8 +18,14 @@ if(array_key_exists('employeeList',$_COOKIE)){
     $eList = unserialize($_COOKIE['employeeList']);
 }
 
-if(array_key_exists($qrData, $eList)){  //to check employee is listed or not 
-    $attend = $eList[$qrData];
+
+$employeeKey = array_search($qrData, array_column($eList, 'hashKey'));  // searching array by value in this case hashKey will find it's mother array ID
+
+
+
+
+if(array_key_exists($employeeKey, $eList)){  //to check employee is listed or not 
+    $attend = $eList[$employeeKey];
 
     if(array_key_exists('time',$attend)){
         $attendTime = $attend['time']; //to store employee current attendece time if it exits
@@ -43,7 +49,7 @@ if(array_key_exists($qrData, $eList)){  //to check employee is listed or not
                     }else{ // to stamp checkout time on second scan
 
                         $attendWithTime = ['name'=>$attend['name'],'job'=>$attend['job'],'hashKey'=>$attend['hashKey'],'time'=>$attend['time'],'checkout'=>date("Y-m-d h:i:sa")];
-                        $eList[$qrData] = $attendWithTime;
+                        $eList[$employeeKey] = $attendWithTime;
                         setcookie("employeeList", serialize($eList), time() + 2592000); //set cookies for 30 days
                         $_SESSION['attendMsg'] = "Goodbye Mr. ". $attend['name']." see you again";
                         $_SESSION['msg-type'] = "primary";
@@ -61,7 +67,7 @@ if(array_key_exists($qrData, $eList)){  //to check employee is listed or not
     // if employe time means it's check in time has not been added on current date it will stamp attendance time 
 
     $attendWithTime = ['name'=>$attend['name'],'job'=>$attend['job'],'hashKey'=>$attend['hashKey'],'time'=>date("Y-m-d h:i:sa")];
-    $eList[$qrData] = $attendWithTime;
+    $eList[$employeeKey] = $attendWithTime;
     setcookie("employeeList", serialize($eList), time() + 2592000); //cookies will be stored for 30 days
     $name = "Welcome Mr. ".$attend['name'] . "<br>";
     $job = "you are a ".$attend['job'];

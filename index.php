@@ -41,7 +41,7 @@ if(!array_key_exists('employeeList',$_COOKIE)){
                 
                 <input name="qrData" type="text" id="qrData" readonly="" hidden="" placeholder="qr code datas" >
                 
-                <!-- manual input to chek code with out qr code -->
+                <!-- manual input to chek code with out qr code note: you can't not use cam input while field on -->
                 <!-- <div class="form-group col-sm-12">
                     <input name="qrData" type="text" id="qrData" placeholder="can't sacan? input ID only" > 
                     <button type="submit">submit</button>

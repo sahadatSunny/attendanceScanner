@@ -1,45 +1,31 @@
 <?php
 
-date_default_timezone_set("Asia/Dhaka");
+$arr = ['1'=>['aa','bb','cc'],'2'=>['dd','ee','ff'],'3'=>['gg','hh','ii']];
 
-$currentDate = date("Y-m-d");
+$userdb=Array
+(
+(0) => Array
+    (
+        "uid" => '100',
+        "aa" => 'Sandra Shush',
+        "url" => 'urlof100'
+    ),
 
-$time = new DateTime(date("Y-m-d"));
-$time->add(new DateInterval('P1D'));
+(1) => Array
+    (
+        "uid" => '5465',
+        "aa"=> 'Stefanie Mcmohn',
+        "url" => 'urlof100'
+    ),
 
-$stamp = $time->format('Y-m-d');
+(2) => Array
+    (
+        "uid" => '40489',
+        "aa" => 'Michael',
+        "url" => 'urlof40489'
+    )
+);
 
-echo $currentDate."<br>";
-echo $stamp."<br>";
+$key = array_search(100, array_column($userdb, 'uid'));
 
-
-
-// $minutes_to_add = 2;
-
-// $time = new DateTime(date("Y-m-d h:i"));
-// $time->add(new DateInterval('PT' . $minutes_to_add . 'M'));
-
-// $stamp = $time->format('Y-m-d h:i');
-
-// echo $stamp;
-
-
-?>
-
-
-<?php
-// date_default_timezone_set("Asia/Dhaka");
-
-// $currentDay = date('H:i:s');
-// echo $currentDay."<br>";
-
-// $timestmp = '00:00:00'; 
-// $newDay = date('H:i:s', strtotime($timestmp));
-// echo $newDay;
-
-// if($currentDay>=$newDay){
-//     echo "it a new day";
-// }else{
-//     echo "The day has not been finished yet";
-// }
-
+echo $key;

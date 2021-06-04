@@ -98,7 +98,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                        <label for="hashKey" class="col-sm-6 form-label">Serial NO:</label>
+                                        <label for="hashKey" class="col-sm-6 form-label">Unique ID:</label>
                                         <div class="col-sm-12">
                                             <input
                                                     type="text"

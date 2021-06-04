@@ -10,11 +10,11 @@ if(isset($_POST['qrData'])){
 }
 
 date_default_timezone_set("Asia/Dhaka");
-$currentDate = date("Y-m-d");
+// $currentDate = date("Y-m-d");
 
-// $timestmp = '2021-06-04';
-// $newDay = date('Y-m-d', strtotime($timestmp));
-// $currentDate = $newDay;
+$timestmp = '2021-06-06';
+$newDay = date('Y-m-d', strtotime($timestmp));
+$currentDate = $newDay;
 
 
 
