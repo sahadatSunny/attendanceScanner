@@ -1,31 +1,38 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+        <div id="text">
+        
+            <h1>hello</h1>
+            <h1>hello</h1>
+            <h1>hello</h1>
+        
+        </div>
 
-$arr = ['1'=>['aa','bb','cc'],'2'=>['dd','ee','ff'],'3'=>['gg','hh','ii']];
+    <button onclick="generatePDF()">save</button>
 
-$userdb=Array
-(
-(0) => Array
-    (
-        "uid" => '100',
-        "aa" => 'Sandra Shush',
-        "url" => 'urlof100'
-    ),
 
-(1) => Array
-    (
-        "uid" => '5465',
-        "aa"=> 'Stefanie Mcmohn',
-        "url" => 'urlof100'
-    ),
 
-(2) => Array
-    (
-        "uid" => '40489',
-        "aa" => 'Michael',
-        "url" => 'urlof40489'
-    )
-);
 
-$key = array_search(100, array_column($userdb, 'uid'));
+    <script>
 
-echo $key;
+function generatePDF(){
+
+const idCard = document.getElementById("text");
+html2pdf()
+.from(idCard)
+.save();
+}
+    </script>
+
+
+</body>
+</html>

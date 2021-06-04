@@ -50,7 +50,7 @@
 
             <div class="alert alert-<?=$_SESSION['msg-type']?>">
 
-                <?=$_SESSION['msg']."<strong><a style='float: right;text-decoration: none; color: #000;' href='addEmployee.php'>&times; close </a></strong>";?>
+                <?=$_SESSION['msg']."<strong><a style='float: right;text-decoration: none; color: #000;' href='addEmployee.php'>&times; close </a></strong>"?>
                 <?php unset($_SESSION['msg'])?>;
 
 

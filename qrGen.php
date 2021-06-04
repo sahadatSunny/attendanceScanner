@@ -3,8 +3,7 @@ include_once 'assets/phpqrcode/qrlib.php';
 session_start();
 
 $eList = [];
-array_unshift($eList,""); // to index array from 1
-unset($eList[0]);
+
 
 if(array_key_exists('employeeList',$_COOKIE)){
     $eList = unserialize($_COOKIE['employeeList']);
@@ -66,11 +65,41 @@ unset($eList['datestmp']);
           margin: 30px 0 30px 30px;
         }
 
+        .float{
+          position:fixed;
+          padding: 5px;
+          font-size: 20px;
+          bottom:40px;
+          right:40px;
+          background-color:#efaa09;
+          color:#FFF;
+          border-radius:10px;
+          text-align:center;
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+
+
 
     </style>
     <title>view ID Card</title>
 </head>
 <body>
+
+    <?php
+        if(isset($_SESSION['msg'])){ ?>
+
+            <div class="alert alert-<?=$_SESSION['msg-type']?>">
+
+                <?=$_SESSION['msg']."<strong><a style='float: right;text-decoration: none; color: #000;' href='qrGen.php'>&times; close </a></strong>"?>
+                <?php unset($_SESSION['msg'])?>;
+
+
+            </div>
+       
+       
+    <?php } ?>
+
+
 
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -88,7 +117,7 @@ unset($eList['datestmp']);
 
   <div class="container">
 
-      <h1 class="text-center mb-6">Employee list</h1>
+      <h3 class="text-center mb-6">Please Select card via checkbox to downlaod</h3>
             <hr>
               <form action="download.php" method="post">  
                 <?php foreach ($eList as $key => $data){ ?>
@@ -105,6 +134,9 @@ unset($eList['datestmp']);
                                   <div class="d-inline-flex container-card top-border container-fluid">
                                   
                                       <div class="row">
+                                                <div class="col-sm-12 row" style="float: right">
+                                                  <input type="checkbox" id="checkItem" name="check[]" value=<?= $key ?>></td>
+                                                </div>
                                               
                                               <div class="col-sm-12 title">
                                                   <h3>ID CARD</h3>
@@ -122,33 +154,14 @@ unset($eList['datestmp']);
                                                   <span class="name col-4">Job:</span><span class="job col-8">  <?=$data['job']?></span>
                                                 </div>
                                                 
+                                            
                                       </div>
                                    
                                   </div>
 
-
-                                    <!-- <div class="card-holder">
-                                     
-                                      <div class="d-inline-flex container-card top-border col-sm-12">
-                                      <img class="card-img-top" src=<?=$fileName?> alt="qr code">
-                                      <h5 class="card-title">Name: <?= $data['name'] ?></h5>
-                                      <h6 class="card-title">job: <?=$data['job']?></h6>
-                          
-                
-                                      </div>
-                                    </div> -->
-
-
-
-
-
-
-
-                        
-
                 <?php
                 } ?>
-              <button type="submit" name="submit">Download</button>
+              <button type="submit" name="submit" class="float btn">download</button>
               </form> 
               
 

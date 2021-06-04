@@ -31,6 +31,7 @@ unset($eList['datestmp']);
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="index.php">START SCANNING</a>
       <a class="nav-item nav-link" href="addEmployee.php">ADD EMPLOYEE</a>
+      <a class="nav-item nav-link" href="qrGen.php">DOWNLOAD ID CARD</a>
     </div>
   </div>
 </nav>
@@ -46,8 +47,6 @@ unset($eList['datestmp']);
                         <th>ID</th>
                         <th>Employee Name</th>
                         <th>Job Title</th>
-                        <th>Office check in time</th>
-                        <th>Office checkout time</th>
                         <th style="padding-left: 50px;">Action</th>
                     </tr>
                 </thead>
@@ -58,12 +57,6 @@ unset($eList['datestmp']);
                         <td scope="row"><?= $key ?></td>
                         <td><?= $data['name'] ?> </td>
                         <td><?= $data['job'] ?> </td>
-                        <td><?php if(array_key_exists('time',$data)){
-                            echo $data['time'];
-                            }?></td>
-                        <td><?php if(array_key_exists('checkout',$data)){
-                            echo $data['checkout'];
-                            }?></td>
                         <td><a title="See more" style="" class="btn btn-info" href="show.php?position=<?=$key?>">&#8594;</a> <a class="btn btn-outline-warning" href="edit.php?position=<?=$key?>">Edit</a>  <a class="btn btn-outline-danger" href="delet.php?position=<?=$key?>">Delet</a></td>
                         </tr>
 

@@ -18,3 +18,14 @@ scanner.addListener('scan',function(c){
     
 });
 
+
+//pdf generator 
+
+function generatePDF(){
+
+    const idCard = document.getElementById("idCards");
+    html2pdf()
+    .from(idCard)
+    .save();
+}
+
