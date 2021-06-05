@@ -100,12 +100,13 @@
                                         <div class="form-group">
                                         <label for="hashKey" class="col-sm-6 form-label">Unique ID:</label>
                                         <div class="col-sm-12">
-                                            <input
+                                            <input class="col-6"
                                                     type="text"
                                                     class="form-control"
                                                     id="hashKey"
                                                     name="hashKey"
-                                                    placeholder="serial NO:"><button onclick="uniqueIdGen()">generate ID</button>
+                                                    placeholder="Unique ID">
+                                            <a class="col-4 btn btn-outline-warning" onclick="uniqueIdGen()">generate</a>
                                         </div>
                                         </div>
                                     

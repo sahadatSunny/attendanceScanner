@@ -9,6 +9,13 @@ if(array_key_exists('employeeList',$_COOKIE)){
 
 unset($eList['datestmp']);
 
+
+if(empty($eList)){
+  $_SESSION['msg'] = "List is empty now please add employee from navbar";
+  $_SESSION['msg-type'] = "primary";
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +48,17 @@ unset($eList['datestmp']);
 
 <h1 class="text-center mb-6">Employee list</h1>
             <hr>
+
+            <!-- will alert if emplyee list stay empty -->
+            <?php if(isset($_SESSION['msg'])) { ?>
+              <div class="alert alert-<?=$_SESSION['msg-type']?>">
+                      <?=$_SESSION['msg']."<strong><a style='float: right;text-decoration: none; color: #000;' href='viewEmployee.php'>&times; close </a></strong>"?>
+                      <?php unset($_SESSION['msg']); ?>
+              </div>
+            <?php }?>
+
+
+
                 <table class="table" style="margin: auto">
                 <thead>
                     <tr>

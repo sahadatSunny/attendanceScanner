@@ -5,6 +5,7 @@ session_start();
 
 if(!array_key_exists('employeeList',$_COOKIE)){
     $_SESSION['attendMsg'] = "Employee List is empty now please add employees to operate";
+    $_SESSION['help-txt'] = "<span style='color: green ;border-left: 50px solid green'>Learn to use:</span><p>". file_get_contents('help.txt')."</p>";
     $_SESSION['msg-type'] = "warning";
 }
 
@@ -99,15 +100,17 @@ if(!array_key_exists('employeeList',$_COOKIE)){
                         
                         <h3 style="color: #fff">Current <span style="color: #ffc107">Status:</span></h3>
                         <div class="alert alert-<?=$_SESSION['msg-type']?>">
-                        <div class="col-sm-8">
+                            <div class="col-sm-8">
 
-                         <?=$_SESSION['attendMsg']?>
+                            <?=$_SESSION['attendMsg']?>
 
-                        </div>
-                            
+                        
+
+                            </div>
                         </div>
                         <a style='float: right;text-decoration: none; color: #fff;margin: 220px 60px 0 0; border: 4px solid #ffc107; border-radius: 100%' href='index.php'><img style="padding: 10px" src="assets/img/close.png"></a>
                     </div>
+                    <div><?=$_SESSION['help-txt']?></div>
                 </div>
 
                 <?php unset($_SESSION['attendMsg']);?>
