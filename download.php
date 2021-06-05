@@ -45,7 +45,7 @@ if(isset($_POST['submit'])){
         .container-card {
         padding: 20px 20px 40px 20px;
         margin:80px 0 80px 1px;
-        border: 1px dotted #999;
+        border: 1px dashed #999;
         width: 260px;
         height: 400px;
         border-bottom-right-radius: 5px;

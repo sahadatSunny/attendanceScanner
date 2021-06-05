@@ -105,7 +105,7 @@
                                                     class="form-control"
                                                     id="hashKey"
                                                     name="hashKey"
-                                                    placeholder="serial NO:">
+                                                    placeholder="serial NO:"><button onclick="uniqueIdGen()">generate ID</button>
                                         </div>
                                         </div>
                                     
@@ -120,6 +120,23 @@
 
 </div>
 </div>
+
+
+<script>
+
+    let uniqueId =  parseInt(Date.now()/Math.random());
+
+    let hashKey = document.getElementById('hashKey');
+
+    function uniqueIdGen(){
+        hashKey.value = uniqueId;
+    }
+    
+
+   
+    console.log(uniqueId);
+
+</script>
 
 
     
