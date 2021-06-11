@@ -11,6 +11,11 @@ if(array_key_exists('employeeList',$_COOKIE)){
 
 unset($eList['datestmp']);
 
+if(empty($eList)){
+  $_SESSION['msg'] = "NO ID card available to downlaod. Please add employee from navbar";
+  $_SESSION['msg-type'] = "primary";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -85,23 +90,6 @@ unset($eList['datestmp']);
 </head>
 <body>
 
-    <?php
-        if(isset($_SESSION['msg'])){ ?>
-
-            <div class="alert alert-<?=$_SESSION['msg-type']?>">
-
-                <?=$_SESSION['msg']."<strong><a style='float: right;text-decoration: none; color: #000;' href='qrGen.php'>&times; close </a></strong>"?>
-                <?php unset($_SESSION['msg'])?>;
-
-
-            </div>
-       
-       
-    <?php } ?>
-
-
-
-
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -119,6 +107,20 @@ unset($eList['datestmp']);
 
       <h3 class="text-center mb-6">Please Select card via checkbox to downlaod</h3>
             <hr>
+            <?php
+                  if(isset($_SESSION['msg'])){ ?>
+
+                      <div class="alert alert-<?=$_SESSION['msg-type']?>">
+
+                       <?=$_SESSION['msg']?>
+                        <?php unset($_SESSION['msg']);?>
+
+
+                      </div>
+            <?php } ?>
+
+
+
               <form action="download.php" method="post">  
                 <?php foreach ($eList as $key => $data){ ?>
                             

@@ -1,6 +1,10 @@
 <?php
-
 session_start();
+
+include_once ($_SERVER['DOCUMENT_ROOT'].'/attendanceScanner/config.php');
+
+use App\utility\Validator;
+use App\utility\Sanitizer;
 
 
 $employee = [];
@@ -11,14 +15,20 @@ if(array_key_exists('employeeList', $_COOKIE)){
 
         if(isset($_POST['submit'])){
 
-            if(empty($_POST['name']) || empty($_POST['job']) || empty($_POST['hashKey'])){
-                
-                $_SESSION['msg'] = "Employee has not been added";
-                $_SESSION['msg-type'] = "warning";
+            $userData = Sanitizer::sanitize($_POST);
+
+            if($userData){
+                $validatedData = Validator::validate($userData);
+            }else{
                 header('location: addEmployee.php');
                 die();
+            }
+
+            if($validatedData){
+                $employee[] = $validatedData;
             }else{
-                $employee[] = $_POST;
+                header("location: addEmployee.php");
+                die();
             }
         
 

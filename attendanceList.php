@@ -9,6 +9,11 @@ if(array_key_exists('employeeList',$_COOKIE)){
 
 unset($eList['datestmp']);
 
+if(empty($eList)){
+  $_SESSION['msg'] = "Employee list is empty. Please add employees from navbar";
+  $_SESSION['msg-type'] = "primary";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +46,19 @@ unset($eList['datestmp']);
 
 <h1 class="text-center mb-6">Viewing Today's Attendance</h1>
             <hr>
+
+            <?php
+                  if(isset($_SESSION['msg'])){ ?>
+
+                      <div class="alert alert-<?=$_SESSION['msg-type']?>">
+
+                       <?=$_SESSION['msg']?>
+                        <?php unset($_SESSION['msg']);?>
+
+
+                      </div>
+            <?php } ?>
+
                 <table class="table" style="margin: auto">
                 <thead>
                     <tr>

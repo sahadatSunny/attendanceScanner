@@ -5,9 +5,14 @@ if(file_exists('storage.txt')){
     $datas = unserialize(file_get_contents('storage.txt'));
 }else{
     echo "Storage not found";
+    $_SESSION['msg'] = "Storage not found contact developer";
+    $_SESSION['msg-type'] = "danger";
 }
 
-
+if(empty($eList)){
+    $_SESSION['msg'] = "You have just started after each day history will be added";
+    $_SESSION['msg-type'] = "primary";
+  }
 
 
 ?>
@@ -86,6 +91,21 @@ if(file_exists('storage.txt')){
 </nav>
 
 <div class="container">
+
+
+<?php
+    if(isset($_SESSION['msg'])){ ?>
+        <hr>
+        <div class="alert alert-<?=$_SESSION['msg-type']?>">
+           
+            <?=$_SESSION['msg']?>
+            <?php unset($_SESSION['msg']);?>
+
+
+        </div>
+<?php } ?>
+
+
 
 
 <?php

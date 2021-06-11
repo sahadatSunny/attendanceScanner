@@ -39,6 +39,10 @@
         .back-btn{
            background-color: #11beaa;
         }
+
+        .gen{
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -51,7 +55,7 @@
             <div class="alert alert-<?=$_SESSION['msg-type']?>">
 
                 <?=$_SESSION['msg']."<strong><a style='float: right;text-decoration: none; color: #000;' href='addEmployee.php'>&times; close </a></strong>"?>
-                <?php unset($_SESSION['msg'])?>;
+                <?php unset($_SESSION['msg'])?>
 
 
             </div>
@@ -106,7 +110,7 @@
                                                     id="hashKey"
                                                     name="hashKey"
                                                     placeholder="Unique ID">
-                                            <a class="col-4 btn btn-outline-warning" onclick="uniqueIdGen()">generate</a>
+                                            <a class="col-4 btn btn-outline-warning gen" onclick="uniqueIdGen()">generate ID</a>
                                         </div>
                                         </div>
                                     
